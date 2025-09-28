@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: tradejournal
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ../backend
+    environment:
+      - APP_SECURITY__SECRET_KEY=change-me
+      - APP_DATABASE__URL=postgresql+psycopg2://postgres:postgres@db:5432/tradejournal
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+
+  worker:
+    build:
+      context: ../workers
+    environment:
+      - APP_DATABASE__URL=postgresql+psycopg2://postgres:postgres@db:5432/tradejournal
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    environment:
+      - NEXT_PUBLIC_API_BASE=http://api:8000/api/v1
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+volumes:
+  db_data:

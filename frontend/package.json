@@ -1,0 +1,39 @@
+{
+  "name": "trade-journal-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "playwright test"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "5.28.6",
+    "axios": "1.6.7",
+    "class-variance-authority": "0.7.0",
+    "clsx": "2.1.0",
+    "lucide-react": "0.320.0",
+    "next": "14.1.0",
+    "next-themes": "0.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "7.49.2",
+    "recharts": "2.8.0",
+    "tailwind-merge": "2.2.1",
+    "tailwindcss-animate": "1.0.7",
+    "zod": "3.22.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.42.1",
+    "@types/node": "20.11.20",
+    "@types/react": "18.2.52",
+    "@types/react-dom": "18.2.17",
+    "autoprefixer": "10.4.17",
+    "postcss": "8.4.35",
+    "tailwindcss": "3.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "5.3.3"
+  }
+}
